@@ -1,5 +1,4 @@
 (function() {
-
     'use strict';
 
     /**
@@ -7,6 +6,7 @@
      * @example <ng-datepicker></ng-datepicker>
      */
 
+    ngFlatDatepickerDirective.$inject = ["$templateCache", "$compile", "$document", "datesCalculator"];
     angular
         .module('ngFlatDatepicker', [])
         .directive('ngFlatDatepicker', ngFlatDatepickerDirective);
@@ -204,12 +204,10 @@
             }
         };
     }
-    ngFlatDatepickerDirective.$inject = ["$templateCache", "$compile", "$document", "datesCalculator"];
 
 })();
 
 (function(){
-
     'use strict';
 
     /**
