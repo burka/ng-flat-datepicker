@@ -4,6 +4,7 @@ var es   = require('event-stream');
 var gulp = require('gulp');
 var $    = require('gulp-load-plugins')();
 var karmaServer = require('karma').Server;
+var eslint = require('gulp-eslint');
 
 var paths = {
     src: {
@@ -26,8 +27,6 @@ var plumberErrorHandler = {
     }
 };
 
-gulp.task('install', ['sass', 'js']);
-gulp.task('default', ['install']);
 
 gulp.task('js', function(){
     return es.merge(getTemplatesStream(), gulp.src(paths.src.js))
@@ -59,10 +58,24 @@ gulp.task('test', function (done) {
     singleRun: true
   }, done).start();
 });
+
+gulp.task('lint', function () {
+    return gulp.src(['src/js/*.js','!node_modules/**'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
 /**
  * Watch
  */
 gulp.task('watch', function(){
+    $.watch([paths.src.js, paths.src.html, paths.src.tests, paths.config.karma], $.batch(function(events, done){
+        gulp.start('test', done);
+    }));
+    $.watch([paths.src.js], $.batch(function(events, done){
+        gulp.start('lint', done);
+    }));
     $.watch(paths.src.scss, $.batch(function(events, done){
         gulp.start('sass', done);
     }));
@@ -70,12 +83,9 @@ gulp.task('watch', function(){
         gulp.start('js', done);
     }));
 });
-gulp.task('watch-test', function(){
-    $.watch([paths.src.js, paths.src.html, paths.src.tests, paths.config.karma], $.batch(function(events, done){
-        gulp.start('test', done);
-    }));
-});
 
+gulp.task('install', ['lint', 'sass', 'js']);
+gulp.task('default', ['install']);
 
 function getTemplatesStream() {
     return gulp.src(paths.src.html)
