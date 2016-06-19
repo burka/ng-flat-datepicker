@@ -1,11 +1,12 @@
 module.exports = function(config) {
   config.set({
     basePath: '',
-    plugins: [ 
-      'karma-phantomjs-launcher', 
-      'karma-jasmine', 
-      'karma-ng-html2js-preprocessor' 
-    ], 
+    plugins: [
+      'karma-phantomjs-launcher',
+      'karma-jasmine',
+      'karma-ng-html2js-preprocessor',
+      'karma-coverage'
+    ],
     frameworks: ['jasmine'],
     files: [
       'node_modules/moment/moment.js',
@@ -16,14 +17,23 @@ module.exports = function(config) {
       'tests/**/*.js',
     ],
     preprocessors: {
-      "src/templates/*.html": ["ng-html2js"]
+      'src/templates/*.html': ['ng-html2js'],
+      'src/js/*.js': ['coverage']
     },
     ngHtml2JsPreprocessor: {
-      stripPrefix: "src/templates/",
-      moduleName: "ngFlatDatepicker",
+      stripPrefix: 'src/templates/',
+      moduleName: 'ngFlatDatepicker',
+    },
+    coverageReporter: {
+      reporters: [{
+        type: 'lcov'
+      }, {
+        type: 'html',
+        dir: 'coverage/'
+      }]
     },
     exclude: [],
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
