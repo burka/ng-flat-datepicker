@@ -10,8 +10,8 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     files: [
       'node_modules/moment/moment.js',
-      'node_modules/angular/angular.js',
-      'node_modules/angular-mocks/angular-mocks.js',
+      //'node_modules/angular/angular.js',
+      //'node_modules/angular-mocks/angular-mocks.js',
       'src/js/*.js',
       'src/templates/*.html',
       'tests/**/*.js',

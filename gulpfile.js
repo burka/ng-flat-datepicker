@@ -55,13 +55,25 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('test', function(done) {
+gulp.task('test-angular-1.3', function (done) {
   new karmaServer({
-    configFile: __dirname + '/karma.conf.js',
-
+    configFile: __dirname + '/karma.angular-1.3.conf',
     singleRun: true
   }, done).start();
 });
+gulp.task('test-angular-1.4', function (done) {
+  new karmaServer({
+    configFile: __dirname + '/karma.angular-1.4.conf',
+    singleRun: true
+  }, done).start();
+});
+gulp.task('test-angular-1.5', function (done) {
+  new karmaServer({
+    configFile: __dirname + '/karma.angular-1.5.conf',
+    singleRun: true
+  }, done).start();
+});
+gulp.task('test', ['test-angular-1.5', 'test-angular-1.4', 'test-angular-1.3']);
 
 gulp.task('lint', function() {
   return gulp.src(['src/js/*.js', '!node_modules/**'])
