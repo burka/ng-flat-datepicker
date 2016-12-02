@@ -160,11 +160,11 @@
 }
 
 .ng-flat-datepicker-arrow svg {
-  width: 27px;
+  width: 18px;
   height: 27px;
   fill: white;
   cursor: pointer;
-  padding: 5px;
+  padding: 0px;
 }
 
 .ng-flat-datepicker-arrow svg:hover {
@@ -196,7 +196,7 @@
 
 .ng-flat-datepicker-custom-select-box:first-of-type .ng-flat-datepicker-custom-select-title,
 .ng-flat-datepicker-custom-select-box:first-of-type .ng-flat-datepicker-custom-select {
-  min-width: 80px;
+  min-width: 50px;
 }
 
 .ng-flat-datepicker-custom-select-box .ng-flat-datepicker-custom-select {

@@ -103,7 +103,22 @@
                     scope.showMonthsList = false;
                     scope.calendarCursor = moment(scope.calendarCursor).month(month);
                 };
+                
+                /**
+                 * Display the previous year in the datepicker
+                 * @return {}
+                 */
+                scope.prevYear = function prevYear() {
+                    scope.calendarCursor = moment(scope.calendarCursor).subtract(1, 'years');
+                };
 
+                /**
+                 * Display the next year in the datepicker
+                 * @return {}
+                 */
+                scope.nextYear = function nextYear() {
+                    scope.calendarCursor = moment(scope.calendarCursor).add(1, 'years');
+                };
                 /**
                  * Select a year and display it in the datepicker depending on the current month
                  * @param  {string} year The year selected in the select element

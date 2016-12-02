@@ -131,11 +131,11 @@ $default-color: #0093de; // Blue
     user-select: none;
     height: 27px;
     svg {
-        width: 27px;
+        width: 18px;
         height: 27px;
         fill: white;
         cursor: pointer;
-        padding:5px;
+        padding:0px;
         &:hover {
             fill: rgba(255,255,255,.5);
         }
@@ -167,7 +167,7 @@ $default-color: #0093de; // Blue
     &:first-of-type {
         .ng-flat-datepicker-custom-select-title,
         .ng-flat-datepicker-custom-select {
-            min-width: 80px;
+            min-width: 50px;
         }
     }
     .ng-flat-datepicker-custom-select {
