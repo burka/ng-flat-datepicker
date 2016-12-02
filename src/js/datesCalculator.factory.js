@@ -15,9 +15,18 @@
          * List all years for the select
          * @return {[type]} [description]
          */
-        function getYearsList() {
+        function getYearsList(config) {
+            var minYear = 2005;
+            var maxYear = moment().year() + 1;
+            if(config.minDate)
+                minYear = moment.utc(config.minDate).year();
+            if(config.maxDate)
+                maxYear = moment.utc(config.maxDate).year();
+            if(minYear > maxYear)
+                console.log('Min date must be smaller than max date!', config.minDate, config.maxDate );
+                
             var yearsList = [];
-            for (var i = 2005; i <= moment().year(); i++) {
+            for (var i = maxYear; i >= minYear; i--) {
                 yearsList.push(i);
             }
             return yearsList;

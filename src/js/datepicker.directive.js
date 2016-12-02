@@ -19,6 +19,7 @@
             },
             link: function(scope, element, attrs, ngModel) {
 
+                console.log('Init with config', scope.config);
                 var template     = angular.element($templateCache.get('datepicker.html'));
                 var dateSelected = '';
                 var today        = moment.utc();
@@ -35,13 +36,13 @@
                 scope.config = angular.extend(defaultConfig, scope.config);
                 if (angular.isDefined(scope.config.minDate)) moment.utc(scope.config.minDate).subtract(1, 'day');
                 if (angular.isDefined(scope.config.maxDate)) moment.utc(scope.config.maxDate).add(1, 'day');
-
+                
                 // Data
                 scope.calendarCursor  = today;
                 scope.currentWeeks    = [];
                 scope.daysNameList    = datesCalculator.getDaysNames();
                 scope.monthsList      = moment.months();
-                scope.yearsList       = datesCalculator.getYearsList();
+                scope.yearsList       = datesCalculator.getYearsList(scope.config);
 
                 // Display
                 scope.pickerDisplayed = false;

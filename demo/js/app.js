@@ -13,7 +13,8 @@
 
         $scope.datepickerConfig = {
             allowFuture: false,
-            dateFormat: 'DD/MM/YYYY'
+            dateFormat: 'DD/MM/YYYY',
+            minDate: moment().subtract(3,'year')
         };
     }
 
