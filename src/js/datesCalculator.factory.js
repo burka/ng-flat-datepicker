@@ -22,6 +22,11 @@
                 minYear = moment.utc(config.minDate).year();
             if(config.maxDate)
                 maxYear = moment.utc(config.maxDate).year();
+            if(config.maxYear)
+                maxYear = config.maxYear;
+            if(config.minYear)
+                minYear = config.minYear;
+                
             if(minYear > maxYear)
                 console.log('Min date must be smaller than max date!', config.minDate, config.maxDate );
                 

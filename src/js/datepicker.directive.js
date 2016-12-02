@@ -29,7 +29,9 @@
                     allowFuture: true,
                     dateFormat: null,
                     minDate: null,
-                    maxDate: null
+                    maxDate: null,
+                    minYear: null,
+                    maxYear: null
                 };
 
                 // Apply and init options

@@ -10,11 +10,11 @@
         .controller('mainController', ['$scope', mainController]);
 
     function mainController ($scope) {
-
         $scope.datepickerConfig = {
             allowFuture: false,
             dateFormat: 'DD/MM/YYYY',
-            minDate: moment().subtract(3,'year')
+            minDate: moment().subtract(3,'year'),
+            maxYear: moment().add(5,'year').year()
         };
     }
 
