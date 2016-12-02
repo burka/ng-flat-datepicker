@@ -31,7 +31,7 @@
                 console.log('Min date must be smaller than max date!', config.minDate, config.maxDate );
                 
             var yearsList = [];
-            for (var i = maxYear; i >= minYear; i--) {
+            for (var i = minYear; i <= maxYear; i++) {
                 yearsList.push(i);
             }
             return yearsList;
